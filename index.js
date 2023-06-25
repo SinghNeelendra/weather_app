@@ -13,6 +13,7 @@ let oldTab = userTab;
 const API_KEY = "5965cf21f3014f216c6ca089dc7d0c7a";
 oldTab.classList.add("current-tab");
 
+
 function switchTab(newTab) {
   if (newTab != oldTab) {
     oldTab.classList.remove("current-tab");
@@ -21,13 +22,15 @@ function switchTab(newTab) {
 
     if (!searchForm.classList.contains("active")) {
       //kya search form wala container is invisible, if yes then make it visible
+      errorLoading.classList.remove("active");
       userInfoContainer.classList.remove("active");
       grantAccessContainer.classList.remove("active");
       searchForm.classList.add("active");
     } else {
       //main pehle search wale tab pr tha, ab your weather tab visible karna h
-      searchForm.classList.remove("active");
+      errorLoading.classList.remove("active");
       userInfoContainer.classList.remove("active");
+      searchForm.classList.remove("active");
       //ab main your weather tab me aagya hu, toh weather bhi display karna poadega, so let's check local storage first
       //for coordinates, if we haved saved them there.
       getfromSessionStorage();
@@ -61,7 +64,6 @@ async function fetchUserWeatherInfo(coordinates) {
   grantAccessContainer.classList.remove("active");
   //make loader visible
   loadingScreen.classList.add("active");
-
   //API CALL
   try {
     const response = await fetch(
@@ -71,9 +73,10 @@ async function fetchUserWeatherInfo(coordinates) {
     if (!data.sys) {
       throw data;
     }
+    userInfoContainer.classList.add("active");
     errorLoading.classList.remove("active");
     loadingScreen.classList.remove("active");
-    userInfoContainer.classList.add("active");
+    
     renderWeatherInfo(data);
   } catch (err) {
     loadingScreen.classList.remove("active");
