@@ -8,7 +8,7 @@
     <title>Weather App</title>
 </head>
 <body>
-    <div class="wapper">
+    <div class="wrapper">
         <h1>Weather app</h1>
         <div class="tab-container">
             <p class="tab" data-userWeather>Your Weather</p>
@@ -16,26 +16,26 @@
         </div>
         <div class="weather-container">
             <!--grant location container-->
-            <div class="grant-location-container">
+            <div class="sub-container grant-location-container">
                 <img src="./assets/location.png" width="80" height="80" loading="lazy">
                 <p>Grant location access</p>
                 <p>Allow access to get weather information</p>
                 <button class="btn" data-grantAccess>Grant access</button>
             </div>
             <!--search form container-->
-            <form class="form-container" data-searchForm>
+            <form class="sub-container form-container" data-searchForm>
                 <input placeholder="Search for city.." data-searchInput>
                 <button class="btn">
                     <img src="./assets/search.png" width="20" height="20" loading="lazy">
                 </button>
             </form>
             <!--loading screen container-->
-            <div class="loading-container">
+            <div class="sub-container loading-container">
                 <img src="./assets/loading.gif" width="150" height="150">
                 <p>Loading</p>
             </div>
             <!--show weather info-->
-            <div class="user-info-container">
+            <div class="sub-container user-info-container">
                 <!--cit name and tag-->
                 <div class="name">
                     <p data-cityName></p>
@@ -61,13 +61,18 @@
                         <p>humidity</p>
                         <p data-humidity></p>
                     </div>
-                    <!---card 1-->
+                    <!---card 3-->
                     <div class="parameter">
                         <img src="./assets/cloud.png">
                         <p>Clouds</p>
                         <p data-cloudiness></p>
                     </div>
                 </div>
+            </div>
+            <!--error handling-->
+            <div class="sub-container error-loading">
+                <img src="./assets/not-found.png" width="150" height="150">
+                <p>City not found</p>
             </div>
         </div>
     </div>
